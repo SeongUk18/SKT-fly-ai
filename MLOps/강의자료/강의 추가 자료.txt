@@ -25,3 +25,7 @@ https://joone.net/2020/05/09/33-%eb%a6%ac%eb%88%85%ec%8a%a4-%eb%b0%b0%ed%8f%ac%e
 
 git ignore
 https://git-scm.com/docs/gitignore
+
+git Head
+https://wikidocs.net/150963
+https://dkswnkk.tistory.com/576
