@@ -2,24 +2,27 @@ name: Python application
 
 on:
   push:
-    branches: [ main ]
+    branches: [ python-ci-workflow ]
+  pull_request:
+    branches: [ python-ci-workflow ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: "3.8"
+        python-version: "3.8.x"
     - name: Display Python version
       run: python -c "import sys; print(sys.version)"
-    - name: Build & push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
-      with:
-        image: uuuks/flaskapp
-        tags: v2.0.0, latest
-        registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build and Push Docker Image
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker build -f SKT-fly-ai/MLOps/git_practice/flask/Dockerfile -t docker.io/***/flaskapp:v2.0.0 -t docker.io/***/flaskapp:latest .
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        docker push docker.io/***/flaskapp:v2.0.0
+        docker push docker.io/***/flaskapp:latest
