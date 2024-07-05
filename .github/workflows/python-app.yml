@@ -22,7 +22,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker build -f SKT-fly-ai/MLOps/git_practice/flask/Dockerfile -t docker.io/***/flaskapp:v2.0.0 -t docker.io/***/flaskapp:latest .
+        docker build -f /MLOps/git_practice/flask/Dockerfile -t docker.io/***/flaskapp:v2.0.0 -t docker.io/***/flaskapp:latest .
         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
         docker push docker.io/***/flaskapp:v2.0.0
         docker push docker.io/***/flaskapp:latest
