@@ -29,3 +29,6 @@ https://git-scm.com/docs/gitignore
 git Head
 https://wikidocs.net/150963
 https://dkswnkk.tistory.com/576
+
+클라우드 관련
+https://landscape.cncf.io/
