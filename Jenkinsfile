@@ -25,7 +25,9 @@ pipeline {
         }
         stage("Build") {
             steps {
-                sh 'docker build -t flask-jenkins:v1.0.0 -f MLOps/git_practice/flask/Dockerfile .'
+                dir('MLOps/git_practice/flask') {
+                    sh 'docker build -t flask-jenkins:v1.0.0 .'
+                }
             }
         }
         stage("test") {
