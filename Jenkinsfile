@@ -5,42 +5,60 @@ pipeline {
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     stages {
+        stage("init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
         stage("Checkout") {
             steps {
                 checkout scm
             }
         }
-        stage("Install Docker Compose") {
+        stage('Verify Directory Structure') {
             steps {
-                sh '''
-                    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    chmod +x /usr/local/bin/docker-compose
-                '''
+                sh 'ls -alh'
+                sh 'ls -alh MLOps/git_practice/flask'
             }
         }
         stage("Build") {
             steps {
                 dir('MLOps/git_practice/flask') {
-                    sh 'docker-compose build web'
+                    sh 'docker build -t flask-jenkins:v1.0.0 .'
+                }
+            }
+        }
+        stage("test") {
+            when {
+                expression {
+                    params.executeTests
+                }
+            }
+            steps {
+                script {
+                    gv.testApp()
                 }
             }
         }
         stage("Tag and Push") {
             steps {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USER_ID', passwordVariable: 'DOCKER_USER_PASSWORD']]) {
-                    dir('MLOps/git_practice/flask') {
-                        sh "docker tag jenkins-pipeline_web:latest ${DOCKER_USER_ID}/jenkins-app:${BUILD_NUMBER}"
-                        sh "docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}"
-                        sh "docker push ${DOCKER_USER_ID}/jenkins-app:${BUILD_NUMBER}"
-                    }
+                withCredentials([[$class: 'UsernamePasswordMultiBinding',
+                credentialsId: 'docker-hub',
+                usernameVariable: 'DOCKER_USER_ID',
+                passwordVariable: 'DOCKER_USER_PASSWORD'
+                ]]) {
+                    sh "docker tag flask-jenkins:v1.0.0 ${DOCKER_USER_ID}/jenkins-app:${BUILD_NUMBER}"
+                    sh "docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}"
+                    sh "docker push ${DOCKER_USER_ID}/jenkins-app:${BUILD_NUMBER}"
                 }
             }
         }
         stage("deploy") {
             steps {
-                dir('MLOps/git_practice/flask') {
-                    sh "docker-compose up -d"
-                }
+                echo 'deploying the application...'
             }
         }
-   
+    }
+}
