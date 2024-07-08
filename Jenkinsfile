@@ -12,7 +12,9 @@ pipeline {
         }
         stage("test") {
             when {
-                expression { return params.executeTests }
+                expression {
+                    return params.executeTests
+                }
             }
             steps {
                 echo 'testing the application...'
@@ -21,6 +23,7 @@ pipeline {
         stage("deploy") {
             steps {
                 echo 'deploying the application...'
+                echo "deploying version ${params.VERSION}"
             }
         }
     }
