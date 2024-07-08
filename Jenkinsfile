@@ -19,7 +19,7 @@ pipeline {
 		}
 		stage("Build") {
 			steps {
-				sh 'docker build -t flask-jenkins:v1.0.0 -f SKT-fly-ai/MLOps/git_practice/flask/Dockerfile .'
+				sh 'docker build -t flask-jenkins:v1.0.0 -f MLOps/git_practice/flask/Dockerfile .'
 			}
 		}
 		stage("test") {
