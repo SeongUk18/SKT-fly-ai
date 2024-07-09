@@ -32,3 +32,12 @@ https://dkswnkk.tistory.com/576
 
 클라우드 관련
 https://landscape.cncf.io/
+
+Jenkins
+https://www.numpyninja.com/post/build-trigger-using-poll-scm-in-jenkins
+https://velog.io/@gobeul/PollSCM-%EC%84%A4%EC%A0%95%EC%9D%84-%ED%86%B5%ED%95%B4-%EC%A7%80%EC%86%8D%EC%A0%81%EC%9C%BC%EB%A1%9C-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%ED%95%B4%EB%B3%B4%EA%B8%B0
+
+kubernetes
+https://kubernetes.io/ko/docs/tutorials/hello-minikube/
+https://kubernetes.io/ko/docs/concepts/workloads/pods/
+
