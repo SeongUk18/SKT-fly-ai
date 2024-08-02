@@ -14,4 +14,4 @@ Hyper-V, ubuntu, Github, Docker, Github Action, Azure, jenkins, kubernetes
 
 - AI 융합 프로그래밍
 
-강화 학습, pytorch
+강화 학습, pytorch, open CV
