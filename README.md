@@ -1,17 +1,22 @@
 # SK-fly-ai
 
-- 빅데이터 with 파이썬
+-  Big Data with Python
 
-데이터 분석 및 시각화(Numpy, Pandas, Matplot, Seaborn), 크롤링
+Data Analysis and Visualization: Numpy, Pandas, Matplotlib, Seaborn
+Web Scraping: BeautifulSoup, Scrapy
 
-- AI 프로그래밍
+- AI Programming
 
-ML(결정트리, regression), DL(DNN, CNN, RNN, LSTM)
+Machine Learning: Decision Trees, Regression
+Deep Learning: DNN (Deep Neural Networks), CNN (Convolutional Neural Networks), RNN (Recurrent Neural Networks), LSTM (Long Short-Term Memory)
 
 - MLOps
+Virtualization and OS: Hyper-V, Ubuntu
+Version Control and CI/CD: GitHub, GitHub Actions, Jenkins
+Containerization and Orchestration: Docker, Kubernetes
+Cloud Services: Azure
 
-Hyper-V, ubuntu, Github, Docker, Github Action, Azure, jenkins, kubernetes
+- AI Integrated Programming
 
-- AI 융합 프로그래밍
-
-강화 학습, pytorch
+Reinforcement Learning: Proficiency in Reinforcement Learning techniques
+Frameworks: PyTorch
