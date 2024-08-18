@@ -1,4 +1,4 @@
-# SK-fly-ai
+# SKT-fly-ai
 
 -  Big Data with Python
 
